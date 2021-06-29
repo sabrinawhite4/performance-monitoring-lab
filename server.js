@@ -12,7 +12,7 @@ const rollbar = new RollBar({
 app.use(express.json());
 
 app.get('/', (req,res) => {
-    rollbar.log("Hello world!");
+    rollbar.log("Hello Sabrina!");
 
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
