@@ -11,9 +11,9 @@ const rollbar = new RollBar({
 
 app.use(express.json());
 
-function students() {
-
-}
+// app.get('/' student) => {
+    
+// }
 
 app.get('/', (req,res) => {
     rollbar.log("Hello Sabrina!");
@@ -22,4 +22,6 @@ app.get('/', (req,res) => {
 });
 
 const port = process.env.PORT || 4000;
+
+app.use(rollbar.errorHandler());
 app.listen(port, () => {console.log(gradient.instagram(`Server rocking on ${port}`))});
