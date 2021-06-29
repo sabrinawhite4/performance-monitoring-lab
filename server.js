@@ -11,6 +11,10 @@ const rollbar = new RollBar({
 
 app.use(express.json());
 
+function students() {
+
+}
+
 app.get('/', (req,res) => {
     rollbar.log("Hello Sabrina!");
 
