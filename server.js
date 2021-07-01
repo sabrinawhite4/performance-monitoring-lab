@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors')
 const path = require('path');
 const gradient = require('gradient-string');
 const app = express();
@@ -9,11 +10,11 @@ const rollbar = new RollBar({
     captureUnhandledRejections: true
 });
 
-
+app.use(cors())
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 
-const animal = []
+const animals = []
 
 app.get('/', (req,res) => {
     rollbar.log("Hello Sabrina!");
@@ -23,7 +24,8 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
-app.post('/api/animal', (req, res) => {
+
+app.post('/api/animals', (req, res) => {
     let {animal} = req.body
     animal = animal.trim();
 
@@ -32,9 +34,9 @@ app.post('/api/animal', (req, res) => {
     });
 
     try {
-        if (index === -1 && animal !== '') {
+        if (index  === -1 && animal !== '') {
             animals.push(animal)
-            rollbar.log('Animal added successfully', {author: 'Sabrina', type: 'manual'});
+            rollbar.log('Animal added successfully', {author: 'sabrina', type: 'manual'});
             res.status(200).send(animals)
         } else if (animal === '') {
             rollbar.error('no animal provided');
