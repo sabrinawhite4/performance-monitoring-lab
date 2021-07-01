@@ -20,7 +20,7 @@
       function submitHandler(event) {
         event.preventDefault();
         axios
-          .post("http://localhost:4000/api/animals", {
+          .post("/api/animals", {
             animal: animalInput.value,
           })
           .then((res) => {
