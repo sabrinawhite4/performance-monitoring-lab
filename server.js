@@ -10,9 +10,8 @@ const rollbar = new RollBar({
     captureUnhandledRejections: true
 });
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, 'public')));
 
 const animals = []
 
@@ -30,7 +29,7 @@ app.post('/api/animals', (req, res) => {
     animal = animal.trim();
 
     const index = animals.findIndex((animalName) => {
-        animalName === animal
+        return animalName === animal
     });
 
     try {
